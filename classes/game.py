@@ -71,8 +71,19 @@ class Person:
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "    " + "ITEMS:" + bcolors.ENDC)
         print("    " + "    " + "0: Go back")
         for item in self.items:
-            print("    " + "    " + str(i) + ".", item["item"].name, ":", item["item"].description, "(x" + str(item["quantity"]) + ")")
+            print("    " + "    " + str(i) + ".", item["item"].name, ":", item["item"].description,
+                  "(x" + str(item["quantity"]) + ")")
             i += 1
+
+    def choose_target(self, enemies):
+        i = 1
+        print("\n" + bcolors.FAIL + bcolors.BOLD + "    " + "TARGET:" + bcolors.ENDC)
+        for enemy in enemies:
+            if enemy.get_hp() != 0:
+                print("    " + "    " + str(i) + ".", enemy.name)
+                i += 1
+        choice = int(input("    " + "Choose target:")) - 1
+        return choice
 
     def heal(self, heal):
         self.hp += heal
